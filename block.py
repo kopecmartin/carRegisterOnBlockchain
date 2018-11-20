@@ -15,26 +15,60 @@ class Block:
     def increment_nonce(self):
         self.nonce += 1
 
-    def get_block_obj(self):
-        return {
+    def get_block_obj(self, add_hash=False):
+        """Returns the block as a dictionary.
+
+        :param add_hash: Whether hash of the block is included or not
+        :type add_hash: Bool
+        :rtype: dict
+        """
+        ret = {
             "timestamp": str(self.timestamp),
             "data": str(self.data),
             "previous_hash": self.previous_hash,
             "nonce": str(self.nonce)
         }
+        if add_hash:
+            ret.update({"hash": self.hash})
+        return ret
 
     def to_string(self):
+        """Returns the block object (dict) in a string format.
+
+        :rtype: string
+        """
         return str(self.get_block_obj())
 
     def to_string_add_hash(self):
+        """Returns the block object (dict) including
+        its hash in a string format.
+
+        :rtype: string
+        """
         b = self.get_block_obj()
         b["hash"] = self.hash
         return str(b)
 
     def get_hash(self):
-        print("my hash", self.to_string())
+        """Calculates a hash of the block.
+
+        :return: a hash of the block
+        :rtype: string
+        """
         return hashlib.sha224(self.to_string().encode()).hexdigest()
 
     def is_block_valid(self):
-        pass
+        """Checks block's validity.
 
+        A block is valid if: TODO
+
+        :return: True if the block is valid, otherwise False
+        :rtype: Bool
+        """
+        # first check if the hash was calculated correctly
+        if self.hash != self.get_hash():
+            return False
+        # check integrity and validity of the data
+        # TODO
+
+        return True

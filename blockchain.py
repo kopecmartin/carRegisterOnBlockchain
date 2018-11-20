@@ -8,10 +8,12 @@ import socket
 
 HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
 PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
-DIFFICULTY = 2
+DIFFICULTY = 1      # Number of zeroes at the beginning of a new hash
 GENESIS_BLOCK = {
-    "hash": "0"
+    "hash": "0",
+    "data": "this is the genesis block"
 }
+
 
 def main():
     # initialize blockchain by adding the genesis block
@@ -29,7 +31,7 @@ def main():
             with conn:
                 print('Connected by', addr)
                 data = conn.recv(2048)
-                print(data.decode())
+                print("A new block received: ", data.decode())
                 # in python3 the string must be encoded
                 conn.sendall("hello from server side".encode())
                 # a new block was sent to the blockchain network and is
@@ -38,14 +40,21 @@ def main():
 
 
 def miners(block, blockchain):
-    print("w", block)
+    """Creates miners as independent processes and if a new block is
+    validated it's added to the blockchain.
+
+    :type block: dict
+    :type blockchain: list
+    """
     # create a shared variable and initialize it
+    # the var is used for communication between processes (miners), when one
+    # of them finds the hash of a block, the others will validate the block
     new_block = Manager().dict()
-    new_block["block"] = ""
-    new_block["validated"] = False
+    new_block["block"] = None
+    new_block["validated"] = None
 
     # in order to simplify this demo, miners will not communicate over p2p,
-    # they will be simulated by independent processes
+    # network but they will be simulated by independent processes
     # let's create 3 miners which will compete in finding a hash
     miners_lst = []
     for i in range(3):
@@ -60,17 +69,24 @@ def miners(block, blockchain):
 
     # join processes
     for p in jobs:
+        # NOTE: the processes will be joined here, which means processes which
+        # got earlier to this point will wait for the rest of them
+        # ^^ above said, we'll wait until all processes validate the block,
+        # if any of them rejects it, the block will not be put into the
+        # blockchain in the next step
         p.join()
 
-    # check if others validated the block
+    # check if others have validated the block
     if new_block["validated"]:
         # add the block to the blockchain
-        blockchain.append(new_block["block"].to_string_add_hash())
-        print("blockchain", blockchain)
+        blockchain.append(new_block["block"].get_block_obj(True))
+        # TODO nice print so that it's more readable during presentation
+        #print("blockchain", blockchain)
+        print("BLOCKCHAIN CONTENT")
+        for block in blockchain:
+            print(block)
     else:
         print("The block has been rejected!")
-
-
 
 
 if __name__ == '__main__':

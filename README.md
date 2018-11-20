@@ -1,7 +1,7 @@
 # carRegisterOnBlockchain
 
 ## About
-
+TODO
 
 
 ## Implementation
@@ -17,20 +17,21 @@ when it receives a new block to validate.
 `miner.py` contains a Miner class that represents a miner.
 
 # Install
-
-```
-$ virtualenv .venv
-$ source .venv/bin/activate
-(.venv)$ pip install -r requirements.txt
-```
-
+No special installation needed, just python 3.6 is required
 
 # Run
-
-
+Start the network and initialize blockchain by:
+```
+$ ./blockchain.py
+```
+In a second terminal execute the following:
+```
+$ ./transaction.py
+```
+in order to create a block which will be mined by miners (processes).
 
 # Run Scenarios
-
+TODO transaction types
 
 
 
