@@ -18,7 +18,8 @@ class Miner:
     def is_blockchain_valid(self, last_block=[]):
         """Checks blockchain's validity.
 
-        The blockchain (in our case) is valid if: TODO
+        The blockchain (in our case) is valid if every block contains
+        the hash of the previous one.
 
         :param last_block: if defined, the blockchain's validity is checked
         with that block included
@@ -48,7 +49,8 @@ class Miner:
 
     def mine(self):
         """Calculates a hash of a block and validates the whole block then."""
-        new_block = Block(self.block['timestamp'], self.block['data'])
+        new_block = Block(self.block['timestamp'], self.block['car'],
+                          self.block['id'])
         # link the block to the previous block
         new_block.previous_hash = self._get_previous_hash()
         while True:
@@ -60,7 +62,10 @@ class Miner:
                 if self.new_block["block"] is None:
                     # the hash hasn't been found yet by any other process,
                     # therefore increase the nonce and continue
-                    new_block.increment_nonce()
+                    # miners will use a different mining mechanism in order
+                    # to increase the probability of finding a hash by
+                    # a different miner
+                    new_block.increment_nonce(self.id + 1)
                     continue
                 break
             break

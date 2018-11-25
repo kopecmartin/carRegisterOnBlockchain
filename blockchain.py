@@ -11,7 +11,9 @@ PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
 DIFFICULTY = 1      # Number of zeroes at the beginning of a new hash
 GENESIS_BLOCK = {
     "hash": "0",
-    "data": "this is the genesis block"
+    "car": {
+        "id": "GENESIS BLOCK"
+    }
 }
 
 
@@ -21,6 +23,8 @@ def main():
     blockchain = [
         GENESIS_BLOCK
     ]
+
+    print_blockchain(blockchain)
 
     # create a server which simulates all blockchain miners
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -34,9 +38,17 @@ def main():
                 print("A new block received: ", data.decode())
                 # in python3 the string must be encoded
                 conn.sendall("hello from server side".encode())
-                # a new block was sent to the blockchain network and is
-                # gonna be send to each miner in the network
-                miners(ast.literal_eval(data.decode()), blockchain)
+
+                msg = ast.literal_eval(data.decode())
+                try:
+                    if msg['request']:
+                        # for purposes of this demo we need to query the
+                        # blockchain
+                        answer(msg, blockchain)
+                except KeyError:
+                    # a new block was sent to the blockchain network and is
+                    # gonna be send to each miner in the network
+                    miners(msg, blockchain)
 
 
 def miners(block, blockchain):
@@ -81,12 +93,31 @@ def miners(block, blockchain):
         # add the block to the blockchain
         blockchain.append(new_block["block"].get_block_obj(True))
         # TODO nice print so that it's more readable during presentation
-        #print("blockchain", blockchain)
-        print("BLOCKCHAIN CONTENT")
-        for block in blockchain:
-            print(block)
+        print_blockchain(blockchain)
     else:
         print("The block has been rejected!")
+
+
+def print_blockchain(blockchain):
+    print("\n")
+    print("BLOCKCHAIN CONTENT")
+    for block in blockchain:
+        print("\n")
+        print(block)
+
+
+def answer(msg, blockchain):
+    print("\n")
+    if msg["request"] == "history":
+        for block in blockchain:
+            try:
+                block_car = ast.literal_eval(block['car'])
+                if block_car['id'] == msg['car_id']:
+                    print("\n")
+                    print(block)
+            except ValueError:
+                # it was the genesis block
+                pass
 
 
 if __name__ == '__main__':

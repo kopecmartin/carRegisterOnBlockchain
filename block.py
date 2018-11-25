@@ -4,16 +4,17 @@ import hashlib
 
 
 class Block:
-    def __init__(self, timestamp, data):
+    def __init__(self, timestamp, car, id):
         self.timestamp = timestamp
-        self.data = data
+        self.car = car
+        self.id = id
         # the following is up to a miner
         self.nonce = 0
         self.previous_hash = ""
         self.hash = ""
 
-    def increment_nonce(self):
-        self.nonce += 1
+    def increment_nonce(self, number):
+        self.nonce += number
 
     def get_block_obj(self, add_hash=False):
         """Returns the block as a dictionary.
@@ -24,7 +25,8 @@ class Block:
         """
         ret = {
             "timestamp": str(self.timestamp),
-            "data": str(self.data),
+            "car": str(self.car),
+            "id": str(self.id),
             "previous_hash": self.previous_hash,
             "nonce": str(self.nonce)
         }
