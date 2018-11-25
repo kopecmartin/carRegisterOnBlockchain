@@ -184,15 +184,12 @@ blocks where the car_ID is found.
 $ ./car_history.py <car_ID>
 ```
 
-# Run Scenarios
-TODO transaction types
-
 
 # Authors
 [Martin Kopec](https://www.linkedin.com/in/martin-kopec-07b29096/)
 
-[Robert Albrecht]()
+[Robert Albrecht](https://www.linkedin.com/in/robert-albrecht498/)
 
-[Daniel Vitek]()
+[Daniel Vitek](https://www.linkedin.com/in/daniel-v%C3%ADtek-683399147/)
 
 
