@@ -51,9 +51,9 @@ a trust in the car's history. Also it would be better for our environment
 thanks to the reduction of paperwork and no need to issue a new plate number
 all over again.
 
-#### How would it work?
+### How would it work?
 
-##### Type of users
+#### Type of users
 We can divide users into two groups:
 1. owner of a car
 2. others (manufacturers, certified service stations, notary/banks, ...)
@@ -76,12 +76,12 @@ a certain amount of money, which they lose if the government department proofs
 them guilty of creating a transaction with false information. They wouldn't
 lose only the stake but also the permission to run their business.
 
-##### A manufacturer
+#### A manufacturer
 After a car is manufactured, it's added to the blockchain providing basic
 information about the car, it's ID, country of origin, mileage equal to 0 etc.
 
 
-##### A service station
+#### A service station
 There are two types of service stations:
 1. In EU it's required to visit (every 2 years) a service station regulated by
    government in order to check basic functionality of the car - the station
@@ -96,19 +96,19 @@ police, only when a car ownership got changed. So if the service station does
 mileage checks, the interval between checks is reduced and therefore the
 tempering with the mileage is less effective and less attractive.
 
-##### Changing a car ownership
+#### Changing a car ownership
 The seller and the buyer create a smart contract, which needs to be validated
 by someone. The validation then triggers the smart contract. So the someone
 needs to check if the money were transferred which could be done by a notary
 or a bank.
 
-##### Government
+#### Government
 - police (issuing new keys for users of type 1, registration of users' personal
   data).
 - a department for regulating users of type 2
 
 
-##### Miners
+#### Miners
 Only the blockchain itself would be public, however, miners will stay private.
 The miners are government servers and servers provided by users of type 2. To
 motivate these users to provide a server for mining they would pay less fees
@@ -122,7 +122,7 @@ all countries and all users of type 2 - therefore it's very unlikely to
 temper with the data, because it's unlikely that all miners would reach a
 consensus to do so.
 
-##### Police check / car patrol
+#### Police check / car patrol
 A policeman scans the car plate, finds out the public key of the owner (it's
 public information stored in the blockchain) and then will use the public key
 to search the owner in the police database (this is a private system, only
