@@ -10,6 +10,10 @@ were working on a school project whose aim was to explain technologies like
 blockchain and smart contracts and find a real life example where usage of
 those technologies would made people's life easier and more secure.
 
+The full paper is available only in Czech and Slovak language, however, the
+practical usage of the technologies we've come up with is described in this
+Readme in English.
+
 ### Why would we want to have something like that?
 Buying a car and transferring its ownership is quite expansive process which
 takes certain amount of time and often this process is very bureaucratic.
@@ -36,7 +40,7 @@ owner.
 
 
 ### What would the system based on blockchain change?
-The process of transferring an ownership would become more transparent
+The process of transferring an ownership would become more transparent.
 
 #### Advantages:
 - trust in the car's history (its mileage, country of origin, ...)
