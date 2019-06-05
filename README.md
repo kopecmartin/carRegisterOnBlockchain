@@ -8,28 +8,28 @@ and how it works.
 We have come up with the idea of car registration based on blockchain, while we
 were working on a school project whose aim was to explain technologies like
 blockchain and smart contracts and find a real life example where usage of
-those technologies would made people's life easier and more secure.
+those technologies would make people's life easier and more secure.
 
 The full paper is available only in Czech and Slovak language, however, the
 practical usage of the technologies we've come up with is described in this
 Readme in English.
 
 ### Why would we want to have something like that?
-Buying a car and transferring its ownership is quite expansive process which
-takes certain amount of time and often this process is very bureaucratic.
+Buying a car and transferring its ownership is quite expensive process which
+takes certain amount of time and it's often very bureaucratic.
 
 Apart from time and money, when you're buying a used car, you need to
-trust the seller that the information he provides are true. The biggest issue
+trust the seller that the information he provides is true. The biggest issue
 seems to be that the sellers many times lie about the car's mileage.
 
 A car's mileage is difficult to verify, mainly when the car was transferred
 from one country to another (take EU as an example) by a car dealer or car
-reseller. Usually, the cars dealers change car's mileage to lower in order to
+reseller. Usually, the cars dealers decrease car's mileage in order to
 increase attractivity of the car among potential buyers. Governments' systems
-are not ideally interconnected with the systems in other EU states and car
-resellers took an advantage of it.
+are not ideally interconnected with the systems in other EU states and cars
+resellers have taken an advantage of it.
 
-In most countries of EU when a car's owner got changed, the new owner needs to
+In most EU countries when a car's owner gets changed, the new owner needs to
 issue a new plate number. This is expansive, time consuming and it's not ideal
 for the environment. Also the new owner gets a new technical paper of the car
 where all car's information are stated (technical parameters and the owner
@@ -44,7 +44,7 @@ The process of transferring an ownership would become more transparent.
 
 #### Advantages:
 - trust in the car's history (its mileage, country of origin, ...)
-- one plate number for the whole car's life
+- one plate number for the entire car's life
 - no need of having (and issuing) a technical paper of the car - all the
   information would be saved in the blockchain
 - owner's time would be saved because visits of the official government
@@ -76,9 +76,9 @@ easily find and identify users of type 2. Thanks to that, a user of type 1 can
 easily verify which dealer or car reseller is the car from.
 
 In order to demotivate users of type 2 to cheat, they are required to stake
-a certain amount of money, which they lose if the government department proofs
-them guilty of creating a transaction with false information. They wouldn't
-lose only the stake but also the permission to run their business.
+a certain amount of money, which they'll lose if the government department
+proofs them guilty of creating a transaction with false information. They
+wouldn't loose only the stake but also the permission to run their business.
 
 #### A manufacturer
 After a car is manufactured, it's added to the blockchain providing basic
@@ -96,7 +96,7 @@ There are two types of service stations:
 Let's say, the service stations of type 1 adds also a mileage check,
 which means, they would create a transaction in the blockchain which increases
 the mileage of the car. In most EU countries the mileage check is done by
-police, only when a car ownership got changed. So if the service station does
+police, only when a car ownership gets changed. So if the service station does
 mileage checks, the interval between checks is reduced and therefore the
 tempering with the mileage is less effective and less attractive.
 
@@ -113,15 +113,15 @@ or a bank.
 
 
 #### Miners
-Only the blockchain itself would be public, however, miners will stay private.
+Only the blockchain itself would be public, however, miners would stay private.
 The miners are government servers and servers provided by users of type 2. To
 motivate these users to provide a server for mining they would pay less fees
 for running their business.
 
 Miners are private, so the network should be secured from 51% attack and users
 of the network will still have a trust in it, because it is used widely in
-EU, so even if a user doesn't trust to government of the country he lives
-in, he believes in the date in the blockchain because they were validated by
+EU, so even if users don't trust the government of the country they live
+in, they believe in the data in the blockchain because it was validated by
 all countries and all users of type 2 - therefore it's very unlikely to
 temper with the data, because it's unlikely that all miners would reach a
 consensus to do so.
@@ -130,7 +130,7 @@ consensus to do so.
 A policeman scans the car plate, finds out the public key of the owner (it's
 public information stored in the blockchain) and then will use the public key
 to search the owner in the police database (this is a private system, only
-police can see this information)
+police can access it)
 
 
 ## Demo Implementation
@@ -164,9 +164,9 @@ sets additional data like manufacturer (Volkswagen), model (Golf), year
 (current year), country_of_origin (Czech Republic).
 
 Run the following script to simulate a change of the car ownership.
-NOTE: this is a simple demo, so the users doesn't have to exist, so you can
+NOTE: this is a simple demo, so the users doesn't have to exist, you can
 make up buyer id, however, as a car id use the one, `manufacturer.py` script
-generated in the step above and as a seller id use the manufacturers id.
+generated in the step above and as a seller id use the manufacturer's id.
 ```console
 $ ./seller.py <seller_ID> <buyer_ID> <car_ID>
 ```
